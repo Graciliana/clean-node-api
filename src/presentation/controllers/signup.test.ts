@@ -1,4 +1,4 @@
-import { SignUpController } from "./signup"
+import { SignUpController } from './signup'
 describe('Signup Controller', () => {
   test('Validar login sem passar o nome ', () => {
     const sut = new SignUpController()
@@ -9,7 +9,7 @@ describe('Signup Controller', () => {
         passwordConfirmation: 'any_password',
       },
     }
-    const httpResponse = sut.handle(httpRequest)
+    const httpResponse: any = sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(401)
     expect(httpResponse.body).toEqual(new Error('Missing param: name'))
   })
@@ -17,12 +17,12 @@ describe('Signup Controller', () => {
     const sut = new SignUpController()
     const httpRequest = {
       body: {
-        name: 'any_name', 
+        name: 'any_name',
         password: 'any_password',
         passwordConfirmation: 'any_password',
       },
     }
-    const httpResponse = sut.handle(httpRequest)
+    const httpResponse: any = sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(401)
     expect(httpResponse.body).toEqual(new Error('Missing param: email'))
   })
